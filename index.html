@@ -139,7 +139,7 @@
   /* ---------- 4. COLOR Y AUDIO ---------- */
   .two{display:grid;grid-template-columns:2fr 1fr;gap:14px}
   .grade{aspect-ratio:16/9;position:relative;background:#000;cursor:ew-resize;user-select:none;touch-action:none}
-  .grade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+  .grade img,.grade video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;display:block}
   .scenes{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;padding:8px;border-top:1px solid var(--line)}
   .scenes button{width:100%;aspect-ratio:16/9;border:2px solid transparent;border-radius:2px;background:#000 center/cover;cursor:pointer;opacity:.6;transition:.2s;position:relative}
   .scenes button span{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,.6);color:#fff;padding:1px 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -295,6 +295,52 @@
   .progress{height:6px;border-radius:3px;background:var(--bg);overflow:hidden;display:none}
   .progress i{display:block;height:100%;width:0;background:var(--hi)}
   .done{display:none;color:var(--a1);font-size:14px}
+  .dest{display:flex;flex-direction:column}
+  .ig{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:24px;border-bottom:1px solid var(--line);transition:background .2s}
+  .ig:hover{background:var(--p2)}
+  .igav{width:84px;height:84px;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,#d9a23b,#a5473b,#6b4f8a,#d9a23b)}
+  .igav img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 30%;border:3px solid var(--p);display:block}
+  .igt{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .igt b{font-size:clamp(20px,2.2vw,26px);letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis}
+  .igt span:last-child{color:var(--soft);font-size:14px}
+  .igb{border:1px solid var(--line);padding:10px 14px;border-radius:2px;font-size:13px;white-space:nowrap;transition:.2s}
+  .ig:hover .igb{border-color:var(--hi);color:var(--hi)}
+  .wa{padding:24px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;flex:1;justify-content:center}
+  .wa h3{font-size:24px}
+  .wa p{color:var(--soft);font-size:15px;max-width:42ch;margin-bottom:6px}
+  @media (max-width:640px){.ig{grid-template-columns:auto 1fr;padding:20px}.igav{width:68px;height:68px}.igb{grid-column:1/-1;text-align:center;min-height:44px;display:grid;place-items:center}.wa{padding:20px}.wa .cta{width:100%;justify-content:center;min-height:44px}}
+  .pitch{margin-bottom:18px}
+  .pitch h3{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.01em;margin-bottom:6px}
+  .pitch p{color:var(--soft);font-size:15px;max-width:52ch}
+  .cal{border:1px solid var(--line);background:var(--bg);padding:12px 14px;display:grid;gap:10px}
+  .calh{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .calh .lab{font-size:12px;color:var(--mut)}
+  .caln{display:flex;justify-content:space-between;align-items:center}
+  .caln b{font-size:14px;font-weight:600}
+  .caln button{width:36px;height:32px;background:none;border:1px solid var(--line);border-radius:2px;color:var(--tx);cursor:pointer;font-size:18px;line-height:1}
+  .caln button:disabled{opacity:.3;cursor:default}
+  .calg{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+  .calg .dw{font-family:var(--mono);font-size:11px;color:var(--mut);text-align:center;padding:2px 0}
+  .calg button{height:36px;background:var(--p);border:1px solid transparent;border-radius:2px;color:var(--tx);cursor:pointer;font-size:13px;position:relative}
+  .calg button:hover:not(:disabled){border-color:var(--mut)}
+  .calg button:disabled{color:#4a4945;background:none;cursor:default}
+  .calg button.hoy{border-color:var(--line)}
+  .calg button.ent{background:var(--rec);color:#fff;font-weight:600}
+  .calr{color:var(--soft);min-height:1.4em}
+  @media (max-width:640px){.calg button{height:40px}}
+  .rq{border:1px solid var(--line);background:var(--bg);padding:12px 14px;display:grid;gap:4px}
+  .rqh{display:flex;justify-content:space-between;color:var(--mut)}
+  .rq b{font-size:16px}.rq #rqd{color:var(--soft)}
+  .rqbar{display:block;height:3px;background:var(--line);margin-top:6px}
+  .rqbar i{display:block;height:100%;width:0;background:var(--hi);transition:width .35s}
+  .send{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+  .send .mono{color:var(--mut)}
+  .wa>.mono{color:var(--mut)}
+  .roles{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+  .roles button{background:var(--p2);border:1px solid var(--line);padding:8px 12px;border-radius:2px;cursor:pointer;font-size:13px;color:var(--tx)}
+  .roles button:hover{border-color:var(--mut)}
+  .roles button.on{border-color:var(--hi);color:var(--hi)}
+  @media (max-width:640px){.send .cta{width:100%;justify-content:center;min-height:44px}.roles button{min-height:40px}}
   .links a{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);transition:padding .2s,color .2s}
   .links a:hover{color:var(--hi)}
 
@@ -503,27 +549,25 @@
   <div class="wrap">
     <div class="shead reveal">
       <div><span class="mono">Color · Audio</span><h2>Color y sonido</h2></div>
-      <p>Arrastra la línea para comparar el material plano con el resultado final y cambia de escena abajo. Las imágenes son de mis rodajes.</p>
+      <p>Arrastra la línea para comparar el material plano con mi etalonaje final, o mueve las perillas e intenta llegar tú. Las imágenes son de mis rodajes.</p>
     </div>
     <div class="two reveal">
       <!-- Fotogramas reales en assets/color/: nombre.jpg (tu etalonaje) y nombre-log.jpg (antes). Para agregar una escena, súmala a SCENES en el script. -->
       <div class="panel"><div class="ph"><b>VISOR · ANTES / DESPUÉS</b><span class="mono">arrastra la línea</span></div>
         <div class="grade" id="grade"><div id="gB"></div><div class="split" id="gA"></div><div class="gbar" id="gbar"></div>
-          <span class="gl" style="left:10px">LOG ORIGINAL</span><span class="gl" style="right:10px">ETALONAJE</span></div>
+          <span class="gl" id="glA" style="left:10px">LOG ORIGINAL</span><span class="gl" style="right:10px">MI ETALONAJE</span></div>
         <div class="scenes" id="scenes"></div></div>
-      <div class="panel"><div class="ph"><b>COLORIZACIÓN</b><span class="mono">en vivo</span></div>
+      <div class="panel"><div class="ph"><b>COLORIZACIÓN · PRUEBA TÚ</b><span class="mono">sobre el material plano</span></div>
         <div class="pc">
-          <p style="color:var(--soft);font-size:14px;margin-bottom:18px">El material sale plano de cámara y se lleva a un look final, con pieles naturales y el mismo color entre cámaras y drone.</p>
+          <p style="color:var(--soft);font-size:14px;margin-bottom:18px">Mueve las perillas e intenta llegar a mi etalonaje desde el material plano. Lo que no se consigue con perillas (curvas, máscaras, pieles por separado, igualar cámaras y drone) es el trabajo de colorización.</p>
           <div class="ctl">
-            <div><label>Contraste <span id="vC"></span></label><input type="range" id="c" min="0.6" max="1.6" step="0.01" value="1"></div>
-            <div><label>Saturación <span id="vS"></span></label><input type="range" id="s" min="0" max="2" step="0.01" value="1"></div>
-            <div><label>Temperatura <span id="vT"></span></label><input type="range" id="t" min="-30" max="30" step="1" value="0"></div>
-            <div><label>Exposición <span id="vE"></span></label><input type="range" id="e" min="0.6" max="1.4" step="0.01" value="1"></div>
+            <div><label>Contraste <span id="vC"></span></label><input type="range" id="c" min="0.6" max="1.3" step="0.01" value="1"></div>
+            <div><label>Saturación <span id="vS"></span></label><input type="range" id="s" min="0" max="1.3" step="0.01" value="1"></div>
+            <div><label>Temperatura <span id="vT"></span></label><input type="range" id="t" min="-12" max="12" step="1" value="0"></div>
+            <div><label>Exposición <span id="vE"></span></label><input type="range" id="e" min="0.6" max="1.2" step="0.01" value="1"></div>
           </div>
-          <p class="mono" style="margin:20px 0 8px">Presets</p>
-          <div class="presets" id="presets">
-            <button data-v="1.18,1.3,-6,0.95">Atardecer cálido</button><button data-v="1.25,0.7,18,0.92">Teal & Orange</button>
-            <button data-v="1.35,0,0,1">Blanco y negro</button><button data-v="0.95,0.8,4,1.08">Documental suave</button><button data-v="1,1,0,1">Mi etalonaje</button>
+          <div class="presets" id="presets" style="margin-top:20px">
+            <button id="verMio">Ver mi etalonaje</button><button id="reset">Reiniciar</button>
           </div>
         </div></div>
     </div>
@@ -614,36 +658,59 @@
   <div class="wrap">
     <div class="shead reveal">
       <div><span class="mono">Exportar · nuevo proyecto</span><h2>Contacto</h2></div>
-      <p>Cuéntame qué tipo de pieza necesitas, para cuándo y dónde se va a publicar. Respondo en menos de 24 horas.</p>
+      <p>Cuéntame qué necesitas y te devuelvo una propuesta clara: enfoque, tiempos y presupuesto. Respondo en menos de 24 horas.</p>
     </div>
     <div class="contact reveal">
-      <div class="panel"><div class="ph"><b>AJUSTES DE EXPORTACIÓN</b></div>
+      <div class="panel"><div class="ph"><b>AJUSTES DE EXPORTACIÓN</b><span class="mono">tu proyecto</span></div>
         <div class="pc">
           <!-- Al enviar, abre WhatsApp con el mensaje ya escrito (número en WA_NUM del script) -->
+          <div class="pitch">
+            <h3>Cada pieza, pensada para su objetivo.</h3>
+            <p>De un recorrido inmobiliario a un documental. 14 años produciendo para marcas como Vistazo y Pronaca.</p>
+          </div>
           <form class="form" id="form">
             <div class="g2"><label>Nombre<input required name="nombre" placeholder="Tu nombre"></label><label>Empresa / marca<input name="empresa" placeholder="Opcional"></label></div>
             <div class="g2">
               <label>Formato<select name="formato"><option>Reportaje / documental</option><option>Reels para redes</option><option>Tomas de drone</option><option>Entrevista / podcast en video</option><option>Solo postproducción</option><option>Otro</option></select></label>
               <label>Duración aprox.<select name="duracion"><option>&lt; 1 min</option><option>1 – 5 min</option><option>5 – 20 min</option><option>&gt; 20 min</option></select></label>
             </div>
-            <div class="g2">
-              <label>Fecha de entrega<input type="date" name="fecha"></label>
-              <label>Presupuesto<select name="presupuesto"><option>Por definir</option><option>Menos de $500</option><option>$500 – $1.500</option><option>$1.500 – $5.000</option><option>Más de $5.000</option></select></label>
+            <div class="cal" id="cal">
+              <div class="calh"><span class="lab">Fecha de entrega estimada</span></div>
+              <div class="caln"><button type="button" id="calPrev" aria-label="Mes anterior">‹</button><b id="calMes"></b><button type="button" id="calNext" aria-label="Mes siguiente">›</button></div>
+              <div class="calg" id="calG"></div>
+              <p class="calr mono" id="calR">Toca un día. Si aún no la tienes, déjalo en blanco.</p>
+              <input type="hidden" name="entrega">
             </div>
-            <label>Notas del proyecto<textarea rows="4" name="mensaje" placeholder="¿Qué quieres contar? ¿Dónde se va a publicar?"></textarea></label>
-            <button class="cta" type="submit" style="justify-self:start">Enviar por WhatsApp</button>
+            <label>Presupuesto<select name="presupuesto"><option>Por definir</option><option>Menos de $500</option><option>$500 – $1.500</option><option>$1.500 – $5.000</option><option>Más de $5.000</option></select></label>
+            <label>Notas del proyecto<textarea rows="4" name="mensaje" placeholder="Ej.: un video de 2 minutos para lanzar nuestro producto en Instagram y LinkedIn."></textarea></label>
+            <div class="rq" aria-live="polite"><div class="rqh mono"><span>COLA DE RENDER</span><span id="rqp">0%</span></div>
+              <b id="rqt">Tu proyecto</b><span id="rqd" class="mono">Reportaje / documental · &lt; 1 min</span>
+              <i class="rqbar"><i id="rqbar"></i></i></div>
+            <div class="send"><button class="cta" type="submit">Quiero mi propuesta</button>
+              <span class="mono">sin compromiso · respuesta en menos de 24 h · llega directo a mi WhatsApp</span></div>
             <div class="done" id="done">Listo. Se abrió WhatsApp con tu mensaje: solo dale enviar.</div>
           </form>
         </div></div>
-      <div class="panel"><div class="ph"><b>DESTINOS</b></div>
-        <div class="pc links">
-          <a href="https://wa.me/593979864314" target="_blank" rel="noopener"><span>WhatsApp · +593 97 986 4314</span><span class="mono">Abrir</span></a>
-          <a href="mailto:guzmandavila@proton.me"><span>Email · guzmandavila@proton.me</span><span class="mono">Abrir</span></a>
-          <a href="https://instagram.com/guzzmandavila" target="_blank" rel="noopener"><span>Instagram · @guzzmandavila</span><span class="mono">Abrir</span></a>
-          <!-- Ocultos por ahora:
-          <a href="https://vimeo.com/USUARIO" target="_blank" rel="noopener"><span>Vimeo</span><span class="mono">Abrir</span></a>
-          <a href="https://youtube.com/@CANAL" target="_blank" rel="noopener"><span>YouTube</span><span class="mono">Abrir</span></a> -->
-        </div></div>
+      <div class="panel dest"><div class="ph"><b>DESTINOS</b><span class="mono">redes y chat directo</span></div>
+        <a class="ig" href="https://instagram.com/guzzmandro" target="_blank" rel="noopener">
+          <span class="igav"><img src="assets/fotos/retrato.jpg" alt="" loading="lazy"></span>
+          <span class="igt"><span class="mono">Instagram</span><b>@guzzmandro</b><span>Rodajes, detrás de cámara y trabajos recientes.</span></span>
+          <span class="igb">Ver perfil</span>
+        </a>
+        <div class="wa">
+          <span class="mono">Red de colaboradores</span>
+          <h3>¿Quieres trabajar conmigo?</h3>
+          <p>Estoy armando una red de creativos para delegar proyectos. Si eres de alguno de estos oficios, elige el tuyo y mándame tu portafolio.</p>
+          <div class="roles" id="roles">
+            <button type="button">Camarógrafo</button><button type="button">Piloto de drone</button><button type="button">Editor</button>
+            <button type="button">Colorista</button><button type="button">Sonidista</button><button type="button">Motion graphics</button>
+          </div>
+          <a class="cta" id="unirme" href="#" target="_blank" rel="noopener">Unirme a la red</a>
+        </div>
+        <!-- Ocultos por ahora:
+        <a href="https://vimeo.com/USUARIO" target="_blank" rel="noopener">Vimeo</a>
+        <a href="https://youtube.com/@CANAL" target="_blank" rel="noopener">YouTube</a> -->
+      </div>
     </div>
   </div>
 </section>
@@ -775,7 +842,7 @@ addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)
 
 /* ---------- Color ---------- */
 // Escenas reales: assets/color/<f>-log.jpg (antes) y <f>.jpg (tu etalonaje final)
-const SCENES=[{f:"piel",n:"Piel"},{f:"retrato",n:"Retrato"},{f:"cafe",n:"Entrevista"},{f:"cocina",n:"Interior"},{f:"contraluz",n:"Contraluz"},{f:"niebla",n:"Niebla"},{f:"montana",n:"Montaña"},{f:"sendero",n:"Sendero"},{f:"cascada",n:"Cascada"},{f:"bosque-seco",n:"Bosque seco"},{f:"semillas",n:"Detalle"},{f:"flores",n:"Flores"},{f:"lago",n:"Lago"},{f:"orilla",n:"Orilla"},{f:"playa",n:"Playa"},{f:"rio",n:"Drone · río"},{f:"valle",n:"Drone · valle"},{f:"campo",n:"Drone · campo"},{f:"mar",n:"Drone · mar"},{f:"atardecer",n:"Atardecer"}];
+const SCENES=[{f:"piel",n:"Piel"},{f:"retrato",n:"Retrato"},{f:"entrevista",n:"Entrevista"},{f:"nocturno",n:"Nocturno"},{f:"contraluz",n:"Contraluz"},{f:"costa-nublada",n:"Costa nublada"},{f:"drone-costa",n:"Drone · costa"},{f:"sendero",n:"Sendero"},{f:"cascada",n:"Cascada"},{f:"drone-canoa",n:"Drone · canoa"},{f:"detalle",n:"Detalle"},{f:"gastronomia",n:"Gastronomía"},{f:"laguna",n:"Laguna"},{f:"exterior",n:"Exterior"},{f:"playa",n:"Playa"},{f:"rio",n:"Drone · río"},{f:"valle",n:"Drone · valle"},{f:"campo",n:"Drone · campo"},{f:"mar",n:"Drone · mar"},{f:"atardecer",n:"Atardecer"}];
 function scene(i){const f=SCENES[i].f;
   $('#gA').innerHTML=`<img src="assets/color/${f}-log.jpg" alt="${SCENES[i].n}, material plano antes de colorizar">`;
   $('#gB').innerHTML=`<img src="assets/color/${f}.jpg" alt="${SCENES[i].n}, con etalonaje">`;
@@ -785,13 +852,17 @@ $$('#scenes button').forEach((b,i)=>b.onclick=()=>scene(i));
 scene(0);
 function grade(){const c=+$('#c').value,s=+$('#s').value,t=+$('#t').value,e=+$('#e').value;
   $('#vC').textContent=c.toFixed(2);$('#vS').textContent=s.toFixed(2);$('#vT').textContent=(t>0?'+':'')+t;$('#vE').textContent=e.toFixed(2);
-  $('#gB').style.filter=`contrast(${c}) saturate(${s}) brightness(${e}) sepia(${Math.max(0,-t)/100}) hue-rotate(${t}deg)`}
-['c','s','t','e'].forEach(id=>$('#'+id).oninput=()=>{$$('#presets button').forEach(b=>b.classList.remove('on'));grade()});
-$('#presets').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;const v=b.dataset.v.split(',');['c','s','t','e'].forEach((id,k)=>$('#'+id).value=v[k]);
-  $$('#presets button').forEach(x=>x.classList.toggle('on',x===b));grade()};
-[...$$('#presets button')].pop().click();
+  const neutro=c===1&&s===1&&t===0&&e===1;
+  $('#gA').style.filter=neutro?'':`contrast(${c}) saturate(${s}) brightness(${e}) sepia(${Math.max(0,-t)/100}) hue-rotate(${t}deg)`;
+  $('#glA').textContent=neutro?'LOG ORIGINAL':'TU INTENTO'}
+['c','s','t','e'].forEach(id=>$('#'+id).oninput=()=>{grade();if(gp<20)slideTo(50)});
+grade();
 const gr=$('#grade');let dg=false;
-const sp=x=>{const r=gr.getBoundingClientRect();const p=Math.max(0,Math.min(100,(x-r.left)/r.width*100));$('#gA').style.clipPath=`inset(0 ${100-p}% 0 0)`;$('#gbar').style.left=p+'%'};
+let gp=50;const setp=p=>{gp=p;$('#gA').style.clipPath=`inset(0 ${100-p}% 0 0)`;$('#gbar').style.left=p+'%'};
+const sp=x=>{const r=gr.getBoundingClientRect();setp(Math.max(0,Math.min(100,(x-r.left)/r.width*100)))};
+function slideTo(to){const from=gp,t0=performance.now();const st=now=>{const k=Math.min(1,(now-t0)/600),q=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;setp(from+(to-from)*q);if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
+$('#verMio').onclick=()=>slideTo(0);
+$('#reset').onclick=()=>{['c','s','t','e'].forEach(id=>$('#'+id).value=id==='t'?0:1);grade();slideTo(50)};
 gr.onpointerdown=e=>{dg=true;gr.setPointerCapture(e.pointerId);sp(e.clientX)};gr.onpointermove=e=>dg&&sp(e.clientX);gr.onpointerup=()=>dg=false;
 
 
@@ -896,10 +967,47 @@ $$('.reveal').forEach(el=>io.observe(el));
 /* ---------- Formulario: barra de render (demo) ---------- */
 const WA_NUM="593979864314";
 $('#form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),g=k=>(f.get(k)||'').trim();
-  const lines=[`Hola Ronald, soy ${g('nombre')}${g('empresa')?` (${g('empresa')})`:''}.`,`Proyecto: ${g('formato')} · ${g('duracion')}`];
-  if(g('fecha'))lines.push(`Entrega: ${g('fecha')}`);lines.push(`Presupuesto: ${g('presupuesto')}`);if(g('mensaje'))lines.push('',g('mensaje'));
+  const lines=[`Hola Ronald, soy ${g('nombre')}${g('empresa')?` (${g('empresa')})`:''}. Quiero una propuesta para este proyecto:`,`Formato: ${g('formato')} · ${g('duracion')}`];
+  if(g('entrega'))lines.push(`Entrega estimada: ${g('entrega')}`);lines.push(`Presupuesto: ${g('presupuesto')}`);if(g('mensaje'))lines.push('',g('mensaje'));
   $('#done').style.display='block';
   window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener')};
+
+/* Calendario: fecha de entrega estimada (un solo día) */
+(()=>{const F=$('#form'),G=$('#calG'),hoy=new Date();hoy.setHours(0,0,0,0);
+  const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  let ent=null,vis=new Date(hoy.getFullYear(),hoy.getMonth(),1);
+  function draw(){const y=vis.getFullYear(),m=vis.getMonth();{const t=vis.toLocaleDateString('es-EC',{month:'long'});$('#calMes').textContent=t[0].toUpperCase()+t.slice(1)+' '+y}
+    $('#calPrev').disabled=y===hoy.getFullYear()&&m===hoy.getMonth();
+    const off=(new Date(y,m,1).getDay()+6)%7,n=new Date(y,m+1,0).getDate();
+    let h=['L','M','M','J','V','S','D'].map(x=>`<span class="dw">${x}</span>`).join('')+'<span></span>'.repeat(off);
+    for(let i=1;i<=n;i++){const d=new Date(y,m,i),k=iso(d);
+      h+=`<button type="button" data-d="${k}" class="${k===iso(hoy)?'hoy':''} ${k===ent?'ent':''}" ${d<hoy?'disabled':''} aria-pressed="${k===ent}" aria-label="${i} de ${MES[m]}">${i}</button>`}
+    G.innerHTML=h}
+  G.onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled)return;const k=b.dataset.d;ent=ent===k?null:k;
+    const d=ent&&new Date(ent+'T00:00');F.entrega.value=ent?`${d.getDate()} ${MES[d.getMonth()]} ${d.getFullYear()}`:'';
+    $('#calR').textContent=ent?`Entrega estimada: ${d.toLocaleDateString('es-EC',{weekday:'long',day:'numeric',month:'long'})}`:'Toca un día. Si aún no la tienes, déjalo en blanco.';
+    F.dispatchEvent(new Event('change'));draw()};
+  $('#calPrev').onclick=()=>{vis=new Date(vis.getFullYear(),vis.getMonth()-1,1);draw()};
+  $('#calNext').onclick=()=>{vis=new Date(vis.getFullYear(),vis.getMonth()+1,1);draw()};
+  draw()})();
+
+/* Cola de render: resume el proyecto mientras lo llenan */
+(()=>{const F=$('#form');
+  const up=()=>{const f=new FormData(F),g=k=>(f.get(k)||'').trim();
+    const t=g('empresa')||g('nombre');$('#rqt').textContent=t?`Proyecto de ${t}`:'Tu proyecto';
+    const d=[g('formato'),g('duracion')];if(g('entrega'))d.push('entrega '+g('entrega'));if(g('presupuesto')!=='Por definir')d.push(g('presupuesto'));
+    $('#rqd').textContent=d.join(' · ');
+    const pts=[g('nombre'),g('entrega'),g('presupuesto')!=='Por definir',g('mensaje').length>15].filter(Boolean).length,pc=Math.round(20+pts*20);
+    $('#rqp').textContent=pc===100?'listo para exportar':pc+'%';$('#rqbar').style.width=pc+'%'};
+  F.addEventListener('input',up);F.addEventListener('change',up);up()})();
+
+/* Red de colaboradores: mensaje según el oficio elegido */
+(()=>{const bs=[...$$('#roles button')],a=$('#unirme');
+  const up=()=>{const r=bs.filter(b=>b.classList.contains('on')).map(b=>b.textContent.toLowerCase());
+    const oficio=r.length?r.join(', ').replace(/, ([^,]*)$/,' y $1'):'creativo audiovisual';
+    a.href=`https://wa.me/${WA_NUM}?text=${encodeURIComponent(`Hola Ronald, vi tu portafolio. Soy ${oficio} y me gustaría ser parte de tu red de colaboradores. Te comparto mi trabajo: `)}`};
+  bs.forEach(b=>b.onclick=()=>{b.classList.toggle('on');b.setAttribute('aria-pressed',b.classList.contains('on'));up()});up()})();
 
 /* ---------- Inicio ---------- */
 show(0);
