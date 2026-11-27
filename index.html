@@ -309,6 +309,50 @@
   .navtl .lane a:hover,.navtl .lane a.on{opacity:1}
   .navtl .nh{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--rec);pointer-events:none;left:0}
   .navtl .tc{width:120px;text-align:center;font-size:12px;margin:0}
+  .navtl .nprog{display:none}
+
+  /* ---------- Celular: legibilidad, toque y tiras deslizables ---------- */
+  @media (max-width:640px){
+    :root{--tlh:3px}
+    body{padding-bottom:0}
+    section{padding-top:64px}
+    .shead{margin-bottom:20px;gap:12px}
+    .shead h2{font-size:clamp(30px,8.6vw,36px)}
+    .shead p{font-size:15px}
+    /* textos mínimos de 11 px */
+    .ph .mono,.tk .tn,.tk .tl i,.posd .pt,.posd .pbl,.scenes button span,.node .nh i,.ivl button span,.gl,
+    .clip .th .d,.clip .th .n,.clip .th .ab,.osd,.fdet .mono,.lufs .mono,.ivm,.links .mono,footer .mono,.mono{font-size:11px!important;letter-spacing:.03em}
+    .node .nh b{font-size:12px}.node .ns{font-size:12px}
+    .tk .tl{font-size:13px}
+    /* áreas de toque */
+    .burger{width:44px;height:44px;display:grid!important;place-items:center;margin-right:-10px;font-size:24px}
+    .brand{padding:10px 0}
+    .transport .b{min-width:44px;height:40px}
+    .presets button,.toggle button{min-height:40px;padding:8px 12px;font-size:13px}
+    .filters{flex-wrap:nowrap;overflow-x:auto;width:calc(100% + 3vw);margin-right:-3vw;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .filters::-webkit-scrollbar{display:none}
+    .filters button{flex:0 0 auto;min-height:40px;white-space:nowrap}
+    .links a{padding:16px 0}
+    /* barra inferior = línea de progreso */
+    .navtl{height:3px;border:0;background:rgba(255,255,255,.08);backdrop-filter:none}
+    .navtl .lab,.navtl .lane,.navtl .tc{display:none}
+    .navtl .nprog{display:block;position:absolute;left:0;top:0;bottom:0;width:0;transition:background .3s}
+    /* escenas de color: tira deslizable */
+    .scenes{display:flex;overflow-x:auto;gap:8px;padding:10px;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .scenes::-webkit-scrollbar{display:none}
+    .scenes button{flex:0 0 112px;width:112px;scroll-snap-align:start}
+    .scenes button span{padding:2px 4px}
+    /* nodos: una fila deslizable, cables continuos */
+    .nodes-wrap{overflow-x:auto;scroll-snap-type:x mandatory;padding:24px 18px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .nodes-wrap::-webkit-scrollbar{display:none}
+    .nodes{grid-template-columns:repeat(7,62vw);column-gap:26px}
+    .nodes .node{scroll-snap-align:center}
+    .nodes .node:nth-child(n) .wire{display:block;width:26px}
+    .nodes .node:last-child .wire{display:none}
+    .fdet{padding:18px;gap:16px;min-height:0}
+    /* entrevistas */
+    .ivl{grid-template-columns:repeat(3,1fr)}
+  }
 
   /* ---------- Modal de video ---------- */
   .modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;display:none;place-items:center;padding:4vw}
@@ -377,7 +421,8 @@
     <div class="panel">
       <div class="ph"><b>VISOR · PROGRAMA</b><span class="mono">showreel_2026.mov</span></div>
       <div class="viewer">
-        <video src="assets/fondo.mp4" poster="assets/fondo.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+        <video id="fondo" poster="assets/fondo.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+        <script>(function(){var v=document.getElementById("fondo");v.src=innerWidth<700?"assets/fondo-movil.mp4":"assets/fondo.mp4"})()</script>
         <div class="bg"></div>
         <div class="safe"></div>
         <div class="osd otl mono"><span class="dot"></span> REC · 4K · 25p</div>
@@ -560,7 +605,7 @@
       <div class="panel"><div class="ph"><b>CÁMARA B · EN LA SALA</b><span class="mono">sala_de_edicion.jpg</span></div><img src="assets/fotos/sala-edicion.jpg" alt="Sala de edición y mezcla" loading="lazy"></div>
     </div>
     <div class="panel reveal" style="margin-top:14px"><div class="ph"><b>CLIENTES</b><span class="mono">han confiado</span></div>
-      <div class="logos"><span class="lg"><img src="assets/logos/vistazo.png" alt="Vistazo" style="height:30px" loading="lazy"></span><span class="lg"><img src="assets/logos/revista-hogar.png" alt="Revista Hogar" style="height:28px" loading="lazy"></span><span class="lg"><img src="assets/logos/agripac.svg" alt="Agripac" style="height:68px" loading="lazy"></span><span class="lg"><img src="assets/logos/panteon.png" alt="Panteón Bosque de la Vida" style="height:44px" loading="lazy"></span><span class="lg"><img src="assets/logos/la-rotonda.png" alt="La Rotonda Shopping Center" style="height:54px" loading="lazy"></span><span class="lg"><img src="assets/logos/ecotec.png" alt="Universidad ECOTEC" style="height:34px" loading="lazy"></span><span class="lg"><img src="assets/logos/prefectura-guayas.png" alt="Prefectura del Guayas" style="height:38px" loading="lazy"></span><span class="lg"><img src="assets/logos/gadere.png" alt="Gadere" style="height:30px" loading="lazy"></span><span class="lg"><img src="assets/logos/veolia.png" alt="Veolia" style="height:32px" loading="lazy"></span><span class="lg"><img src="assets/logos/interagua.png" alt="Interagua" style="height:50px" loading="lazy"></span><span class="lg"><img src="assets/logos/pronaca.svg" alt="Pronaca" style="height:24px" loading="lazy"></span><span class="lg"><img src="assets/logos/polimusic.png" alt="Polimusic" style="height:62px" loading="lazy"></span></div></div>
+      <div class="logos"><span class="lg"><img src="assets/logos/vistazo.png" alt="Vistazo" style="height:30px" loading="lazy"></span><span class="lg"><img src="assets/logos/revista-hogar.png" alt="Revista Hogar" style="height:28px" loading="lazy"></span><span class="lg"><img src="assets/logos/agripac.png" alt="Agripac" style="height:68px" loading="lazy"></span><span class="lg"><img src="assets/logos/panteon.png" alt="Panteón Bosque de la Vida" style="height:44px" loading="lazy"></span><span class="lg"><img src="assets/logos/la-rotonda.png" alt="La Rotonda Shopping Center" style="height:54px" loading="lazy"></span><span class="lg"><img src="assets/logos/ecotec.png" alt="Universidad ECOTEC" style="height:34px" loading="lazy"></span><span class="lg"><img src="assets/logos/prefectura-guayas.png" alt="Prefectura del Guayas" style="height:38px" loading="lazy"></span><span class="lg"><img src="assets/logos/gadere.png" alt="Gadere" style="height:30px" loading="lazy"></span><span class="lg"><img src="assets/logos/veolia.png" alt="Veolia" style="height:32px" loading="lazy"></span><span class="lg"><img src="assets/logos/interagua.png" alt="Interagua" style="height:50px" loading="lazy"></span><span class="lg"><img src="assets/logos/pronaca.png" alt="Pronaca" style="height:24px" loading="lazy"></span><span class="lg"><img src="assets/logos/polimusic.png" alt="Polimusic" style="height:62px" loading="lazy"></span></div></div>
   </div>
 </section>
 
@@ -611,6 +656,7 @@
   <div class="lab">PÁG</div>
   <div class="lane" id="navlane"><div class="nh" id="nh"></div></div>
   <span class="tc" id="ntc">00:00:00:00</span>
+  <i class="nprog" id="nprog"></i>
 </div>
 
 <div class="modal" id="modal"><button class="x" aria-label="Cerrar">×</button><div class="box" id="mbox"></div></div>
@@ -760,7 +806,9 @@ const FLOW=[
  {k:"entrega",n:"Entrega",s:"Exportación",c:"#6d7a45",d:"Exporto los masters en los formatos que necesites, listos para subir a redes, web o televisión.",r:["Masters 16:9, 9:16 y 1:1","Subtítulos si los necesitas"]}];
 $('#nodes').innerHTML=FLOW.map((f,i)=>`<button class="node" style="--c:${f.c}" data-i="${i}" aria-label="${f.n}: ${f.s}"><div class="nh"><b>${f.n.toUpperCase()}</b><i>${String(i+1).padStart(2,'0')}</i></div><img src="assets/proceso/${f.k}.jpg" alt="" loading="lazy"><div class="ns">${f.s}</div>${i<FLOW.length-1?'<span class="wire"></span>':''}<span class="out"></span></button>`).join('');
 let fi=0,fAuto=true,fT;
-function flowSet(i){fi=i;$$('.node').forEach((n,k)=>{n.classList.toggle('on',k===i);n.classList.toggle('past',k<i)});
+function flowCenter(i){if(innerWidth>640)return;const w=$('.nodes-wrap'),n=$$('.node')[i];if(!w||!n)return;const wr=w.getBoundingClientRect(),nr=n.getBoundingClientRect();
+  w.scrollTo({left:w.scrollLeft+(nr.left-wr.left)-(w.clientWidth-nr.width)/2,behavior:'smooth'})}
+function flowSet(i){fi=i;flowCenter(i);$$('.node').forEach((n,k)=>{n.classList.toggle('on',k===i);n.classList.toggle('past',k<i)});
   const f=FLOW[i];
   $('#fdet').innerHTML=`<div><span class="mono">Nodo ${String(i+1).padStart(2,'0')} · ${f.s}</span><h4>${f.n}</h4><p>${f.d}</p></div>
    <div><span class="mono">Lo que recibes</span><ul>${f.r.map(x=>`<li>${x}</li>`).join('')}</ul></div>
@@ -833,7 +881,8 @@ function onScroll(){const max=document.documentElement.scrollHeight-innerHeight;
   $('#nh').style.left=(p*lane.clientWidth)+'px';$('#ntc').textContent=toTC(Math.floor(p*180*25));
   const y=scrollY+innerHeight*.4;let act=SECS[0].id;SECS.forEach(s=>{if(s.offsetTop<=y)act=s.id});
   $$('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+act));
-  $$('#navlane a').forEach(a=>a.classList.toggle('on',a.dataset.s===act))}
+  $$('#navlane a').forEach(a=>a.classList.toggle('on',a.dataset.s===act));
+  const np=$('#nprog');np.style.width=(p*100)+'%';np.style.background=document.getElementById(act).dataset.color}
 addEventListener('scroll',onScroll,{passive:true});
 addEventListener('resize',()=>{layoutNav();drawWaves();setPos(pos)});
 
