@@ -139,6 +139,30 @@
 
   /* ---------- 2. SERVICIOS = bin ---------- */
   .bin{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .dig{margin-top:14px}
+  .digb{display:grid;gap:36px;padding:36px}
+  .digt{display:grid;grid-template-columns:1fr 1fr;gap:20px 48px;align-items:start}
+  .digt>.mono{color:var(--hi)}
+  .digt h3{font-size:clamp(28px,3.6vw,46px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 12px}
+  .digt p{color:var(--soft);margin-bottom:20px;max-width:46ch}
+  .digl{list-style:none;display:grid;gap:10px;margin-bottom:24px}
+  .digl li{display:grid;gap:1px;padding-left:14px;border-left:2px solid var(--line)}
+  .digl b{font-size:15px}.digl span{color:var(--mut);font-size:14px}
+  .digs{position:relative;padding:0 0 70px;max-width:1000px;width:100%;justify-self:center}
+  .dbrow{display:block;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#0b0b0a;box-shadow:0 24px 60px rgba(0,0,0,.5);transition:transform .3s,border-color .3s;margin-right:20%}
+  .dbar{display:flex;align-items:center;gap:6px;padding:8px 10px;background:var(--p2);border-bottom:1px solid var(--line)}
+  .dbar i{width:9px;height:9px;border-radius:50%;background:#3a3935}
+  .durl{margin-left:10px;font-size:10px;color:var(--mut);text-transform:none;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dbrow img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+  .dphone{position:absolute;right:0;bottom:0;width:25%;border:6px solid #050505;outline:1px solid var(--line);border-radius:26px;overflow:hidden;background:#000;box-shadow:0 24px 60px rgba(0,0,0,.6);transition:transform .3s}
+  .dphone img{display:block;width:100%;aspect-ratio:9/18;object-fit:cover;object-position:top}
+  .dbrow:hover,.dphone:hover{transform:translateY(-4px)}
+  .dbrow:hover{border-color:var(--mut)}
+  .dcap{position:absolute;left:0;bottom:0;display:flex;gap:26px}
+  .dcap a{display:grid;gap:2px}.dcap .mono{font-size:10px}.dcap b{font-size:14px}
+  .dcap a:hover b{color:var(--hi)}
+  @media (max-width:900px){.digb{gap:28px;padding:22px}.digt{grid-template-columns:1fr}.digl{grid-template-columns:1fr}.digt .cta{width:100%;justify-content:center;min-height:44px}
+    .digs{padding-bottom:0}.dbrow{margin-right:18%}.dphone{width:36%;bottom:70px}.dcap{position:static;margin-top:16px;flex-direction:column;gap:10px}}
   .clip{background:var(--p2);border:1px solid var(--line);border-radius:2px;overflow:hidden;transition:border-color .2s,transform .2s}
   .clip:hover{border-color:var(--hi)}
   .clip .th{aspect-ratio:16/7;position:relative;display:grid;place-items:center}
@@ -606,7 +630,7 @@
       <div><span class="mono">Línea de tiempo · trabajos</span><h2>Trabajos</h2></div>
       <div class="filters" id="filters">
         <button class="on" data-f="all">Todo</button><button data-f="reel">Reels</button><button data-f="entrevista">Entrevistas</button>
-        <button data-f="bts">Detrás de cámara</button><button data-f="corporativo">Corporativo</button><button data-f="documental">Documentales y reportajes</button><button data-f="musica">Música en vivo</button>
+        <button data-f="bts">Detrás de cámara</button><button data-f="corporativo">Corporativo</button><button data-f="documental">Documentales y reportajes</button><button data-f="industrial">Procesos industriales</button><button data-f="musica">Música en vivo</button>
       </div>
     </div>
     <div class="edit reveal">
@@ -621,7 +645,7 @@
       </div>
       <div class="panel insp"><div class="ph"><b>INSPECTOR · PROYECTO</b></div><div class="pc" id="insp"></div></div>
       <div class="panel tlp">
-        <div class="ph"><b>SECUENCIA · PORTAFOLIO</b><span class="mono" id="count">12 proyectos · 23.976 fps</span></div>
+        <div class="ph"><b>SECUENCIA · PORTAFOLIO</b><span class="mono" id="count">15 proyectos · 23.976 fps</span></div>
         <div class="tl" id="tl">
           <div class="ruler" id="ruler"></div>
           <div class="track"><div class="lab">V2</div><div class="lane" id="lv2"></div></div>
@@ -732,6 +756,33 @@
           <dl class="meta"><dt>Base</dt><dd>Guayaquil · viajo</dd><dt>Formatos</dt><dd>16:9 · 9:16 · 1:1 · 4K</dd><dt>Idiomas</dt><dd>Español</dd><dt>Respuesta</dt><dd>menos de 24 h</dd></dl>
         </div></div>
     </div>
+    <div class="panel dig reveal"><div class="ph"><b>OTRO FORMATO · DIGITAL</b><span class="mono">también desarrollo</span></div>
+      <div class="digb">
+        <div class="digt">
+          <div><span class="mono">Webs · apps · herramientas</span>
+          <h3>Además del video, construyo páginas web, apps y herramientas personalizadas.</h3></div>
+          <div><p>Cuéntame cuál es tu presupuesto y lo adaptamos pensando en escalabilidad, para que pueda crecer junto con tu negocio.</p>
+          <ul class="digl">
+            <li><b>Páginas web</b><span>Portafolios como este, landing pages y tiendas.</span></li>
+            <li><b>Apps</b><span>Pedidos, catálogos y reservas, en web y celular.</span></li>
+            <li><b>Herramientas a medida</b><span>Formularios, calculadoras, paneles y automatizaciones.</span></li>
+          </ul>
+          <a class="cta" href="#contacto" id="digCta">Cotizar un proyecto digital</a></div>
+        </div>
+        <div class="digs">
+          <a class="dbrow" href="https://guzmandavila.github.io/pluggerestore/" target="_blank" rel="noopener">
+            <span class="dbar"><i></i><i></i><i></i><span class="durl mono">guzmandavila.github.io/pluggerestore</span></span>
+            <img src="assets/digital/pluggere.jpg" alt="Tienda en línea Pluggere: catálogo de electrónicos e instrumentos" loading="lazy">
+          </a>
+          <a class="dphone" href="https://clowder.cafe/" target="_blank" rel="noopener">
+            <img src="assets/digital/clowder.jpg" alt="App de pedidos de Clowder Coffee House en el celular" loading="lazy">
+          </a>
+          <div class="dcap">
+            <a href="https://guzmandavila.github.io/pluggerestore/" target="_blank" rel="noopener"><span class="mono">Tienda · catálogo</span><b>Pluggere ↗</b></a>
+            <a href="https://clowder.cafe/" target="_blank" rel="noopener"><span class="mono">App de pedidos</span><b>Clowder Coffee House ↗</b></a>
+          </div>
+        </div>
+      </div></div>
     <div class="bts reveal">
       <div class="panel"><div class="ph"><b>CÁMARA A · EN RODAJE</b><span class="mono">rodaje.jpg</span></div><img src="assets/fotos/rodaje.jpg" alt="Grabando una entrevista" loading="lazy"></div>
       <div class="panel"><div class="ph"><b>CÁMARA B · EN LA SALA</b><span class="mono">sala_de_edicion.jpg</span></div><img src="assets/fotos/sala-edicion.jpg" alt="Sala de edición y mezcla" loading="lazy"></div>
@@ -759,7 +810,7 @@
           <form class="form" id="form">
             <div class="g2"><label>Nombre<input required name="nombre" placeholder="Tu nombre"></label><label>Empresa / marca<input name="empresa" placeholder="Opcional"></label></div>
             <div class="g2">
-              <label>Formato<select name="formato"><option>Reportaje / documental</option><option>Reels para redes</option><option>Tomas de drone</option><option>Entrevista / podcast en video</option><option>Solo postproducción</option><option>Otro</option></select></label>
+              <label>Formato<select name="formato"><option>Reportaje / documental</option><option>Reels para redes</option><option>Tomas de drone</option><option>Entrevista / podcast en video</option><option>Solo postproducción</option><option>Página web, app o herramienta</option><option>Otro</option></select></label>
               <label>Duración aprox.<select name="duracion"><option>&lt; 1 min</option><option>1 – 5 min</option><option>5 – 20 min</option><option>&gt; 20 min</option></select></label>
             </div>
             <div class="cal" id="cal">
@@ -836,7 +887,7 @@ let hf=0;setInterval(()=>{hf++;$('#heroTc').textContent=toTC(hf)},40);
 /* ---------- Modal de video ---------- */
 function openVideo(key,vertical){const id=VIDEOS[key];$('#mbox').classList.toggle('vert',!!vertical);$('#mbox').classList.remove('poster');
   $('#mbox').innerHTML=!id?'':/\.(mp4|webm|mov)$/i.test(id)?`<video src="${id}" poster="${key==='reel'?'assets/fondo.jpg':`assets/trabajos/${key}.jpg`}" controls autoplay playsinline></video>`
-   :`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+   :`<iframe src="https://www.youtube.com/embed/${id.split('@')[0]}?autoplay=1&rel=0${id.includes('@')?'&start='+id.split('@')[1]:''}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
   if(!id)$('#mbox').innerHTML=`<div class="msg"><div><p class="mono">Reproductor</p><p style="margin-top:10px;font-size:20px">Aquí se reproduce tu video de YouTube o Vimeo.</p><p style="color:var(--mut);margin-top:6px">Agrega su ID en el objeto VIDEOS del código.</p></div></div>`;
   $('#modal').classList.add('open')}
 function openImage(src,alt){$('#mbox').classList.remove('vert');$('#mbox').classList.add('poster');
@@ -865,11 +916,14 @@ $('#bin').innerHTML=SVC.map((s,i)=>`<div class="clip"><div class="th" style="bac
 /* ---------- Trabajos en la línea de tiempo ---------- */
 // Un objeto por trabajo. f = nombre de archivo en assets/trabajos/ (sin extensión).
 // dur = duración real en segundos; vert = true si es vertical 9:16. Edita t (título), s (formato), d (descripción) y cat (filtros).
-// yt = ID de YouTube si el video está solo allí (no hace falta el .mp4; la onda puede ser referencial).
+// yt = ID de YouTube si el video está solo allí (ys = segundo en que empieza) (no hace falta el .mp4; la onda puede ser referencial).
 // Puedes añadir: client:"Nombre del cliente", year:2026, roles:["Cámara","Edición","Color"]
 const WORKS=[
  {f:"aun-hay-hielo",t:"Aún Hay Hielo",s:"Reel · Reportaje ambiental",dur:127.9,vert:true,cat:["reel","documental"],d:"Reportaje sobre el derretimiento de los glaciares del Chimborazo, contado en formato vertical para redes."},
  {f:"monte-sinai",t:"Monte Sinaí",s:"Reportaje · Vistazo",dur:299.6,vert:false,cat:["documental","entrevista"],d:"Reportaje para Vistazo en Monte Sinaí, al noroeste de Guayaquil, donde el deporte se ha convertido en mucho más que una actividad para ocupar el tiempo libre de niños y niñas."},
+ {f:"emelec-95",yt:"gqyrazOetYY",ys:383,t:"Emelec · 95 años",s:"Documental institucional · Fútbol",dur:685,vert:false,cat:["documental"],year:2024,client:"Vistazo · Club Sport Emelec",d:"Documental institucional por los 95 años del Club Sport Emelec: su historia, su hinchada y los nombres que marcaron al Bombillo. Publicado por Revista Vistazo."},
+ {f:"camaron-fabrica",yt:"h12_wN5codo",t:"Desde la Fábrica · Camarón",s:"Documental · Proceso industrial",dur:759,vert:false,cat:["documental","industrial"],year:2023,client:"Vistazo · Acuatecsa",roles:["Cinematografía"],d:"Capítulo de Desde la Fábrica en Acuatecsa: cómo se produce el camarón ecuatoriano, uno de los más apetecidos del mundo, desde el laboratorio hasta la exportación."},
+ {f:"ensa-fabrica",yt:"7koHWpFCJFs",ys:318,t:"Desde la Fábrica · ENSA",s:"Documental · Proceso industrial",dur:650,vert:false,cat:["documental","industrial"],year:2022,client:"Vistazo",roles:["Realización"],d:"Capítulo de Desde la Fábrica en ENSA, la imprenta donde se producen las revistas Vistazo: del papel en bobina a la revista terminada."},
  {f:"cometa-sucre-lejos",yt:"CfwpyJeH-tM",t:"Cometa Sucre · Lejos",s:"Sesión en vivo · Música",dur:204,vert:false,cat:["musica"],year:2024,client:"Cometa Sucre",d:"Sesión en vivo de la banda Cometa Sucre desde el estudio de Uve Sounds, para el Showcase de Estudio B de Radio City. Grabada en Guayaquil en junio de 2024."},
  {f:"omar-rincon",t:"Omar Rincón",s:"Reel · Entrevista",dur:142.0,vert:true,cat:["reel","entrevista"],d:"Entrevista editada en formato reel, con subtítulos dinámicos."},
  {f:"polly-gaby-bts",t:"Polly & Gaby · Portada",s:"Detrás de cámara · Entrevista",dur:193.2,vert:true,cat:["bts","entrevista"],d:"Detrás de cámaras de una sesión de portada para revista, con entrevista a las protagonistas."},
@@ -880,7 +934,7 @@ const WORKS=[
  {f:"hogar-noe",t:"Hogar · Noe",s:"Reel · Promo gastronómica",dur:17.0,vert:true,cat:["reel"],d:"Promo corta de gastronomía para redes."},
  {f:"panteon-metropolitano",t:"Panteón Metropolitano",s:"Corporativo · Servicios",dur:94.8,vert:false,cat:["corporativo"],d:"Video institucional de servicios y productos, con tomas aéreas de las instalaciones."},
  {f:"agripac",t:"Agripac · Tráiler",s:"Corporativo · Tráiler",dur:30.2,vert:true,cat:["corporativo","reel"],d:"Tráiler corporativo para la industria agrícola."}];
-WORKS.forEach(w=>VIDEOS[w.f]=w.yt||`assets/trabajos/${w.f}.mp4`);
+WORKS.forEach(w=>VIDEOS[w.f]=w.yt?w.yt+(w.ys?'@'+w.ys:''):`assets/trabajos/${w.f}.mp4`);
 // Ancho de cada clip proporcional a su duración (mínimo para que se lea el nombre, máximo para que uno largo no tape a los demás)
 const wts=WORKS.map(w=>Math.min(Math.max(w.dur,55),150)),tw=wts.reduce((a,b)=>a+b,0);
 const lens=wts.map(x=>x/tw*100);const starts=[];lens.reduce((a,l)=>(starts.push(a),a+l),0);
@@ -1084,7 +1138,7 @@ $$('.reveal').forEach(el=>io.observe(el));
 /* ---------- Formulario: barra de render (demo) ---------- */
 const WA_NUM="593979864314";
 $('#form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),g=k=>(f.get(k)||'').trim();
-  const lines=[`Hola Ronald, soy ${g('nombre')}${g('empresa')?` (${g('empresa')})`:''}. Quiero una propuesta para este proyecto:`,`Formato: ${g('formato')} · ${g('duracion')}`];
+  const lines=[`Hola Ronald, soy ${g('nombre')}${g('empresa')?` (${g('empresa')})`:''}. Quiero una propuesta para este proyecto:`,`Formato: ${g('formato')}${g('formato')==='Página web, app o herramienta'?'':' · '+g('duracion')}`];
   if(g('entrega'))lines.push(`Entrega estimada: ${g('entrega')}`);lines.push(`Presupuesto: ${g('presupuesto')}`);if(g('mensaje'))lines.push('',g('mensaje'));
   $('#done').style.display='block';
   window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener')};
@@ -1113,7 +1167,7 @@ $('#form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),g=k=>(
 (()=>{const F=$('#form');
   const up=()=>{const f=new FormData(F),g=k=>(f.get(k)||'').trim();
     const t=g('empresa')||g('nombre');$('#rqt').textContent=t?`Proyecto de ${t}`:'Tu proyecto';
-    const d=[g('formato'),g('duracion')];if(g('entrega'))d.push('entrega '+g('entrega'));if(g('presupuesto')!=='Por definir')d.push(g('presupuesto'));
+    const d=[g('formato')];if(g('formato')!=='Página web, app o herramienta')d.push(g('duracion'));if(g('entrega'))d.push('entrega '+g('entrega'));if(g('presupuesto')!=='Por definir')d.push(g('presupuesto'));
     $('#rqd').textContent=d.join(' · ');
     const pts=[g('nombre'),g('entrega'),g('presupuesto')!=='Por definir',g('mensaje').length>15].filter(Boolean).length,pc=Math.round(20+pts*20);
     $('#rqp').textContent=pc===100?'listo para exportar':pc+'%';$('#rqbar').style.width=pc+'%'};
@@ -1125,6 +1179,12 @@ $('#form').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),g=k=>(
     const oficio=r.length?r.join(', ').replace(/, ([^,]*)$/,' y $1'):'creativo audiovisual';
     a.href=`https://wa.me/${WA_NUM}?text=${encodeURIComponent(`Hola Ronald, vi tu portafolio. Soy ${oficio} y me gustaría ser parte de tu red de colaboradores. Te comparto mi trabajo: `)}`};
   bs.forEach(b=>b.onclick=()=>{b.classList.toggle('on');b.setAttribute('aria-pressed',b.classList.contains('on'));up()});up()})();
+
+/* Proyecto digital: lleva al formulario con el formato ya elegido */
+(()=>{const F=$('#form'),dig=()=>F.formato.value==='Página web, app o herramienta';
+  const sync=()=>{F.duracion.disabled=dig();F.duracion.closest('label').style.opacity=dig()?.4:''};
+  F.formato.addEventListener('change',sync);
+  $('#digCta').addEventListener('click',()=>{F.formato.value='Página web, app o herramienta';sync();F.dispatchEvent(new Event('change'))})})();
 
 /* ---------- Inicio ---------- */
 show(0);
