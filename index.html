@@ -3,8 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RNNLD · Ronald Guzmán Dávila — Producción audiovisual</title>
-<meta name="description" content="Grabación, drone, edición, colorización, musicalización y mezcla de audio. Reportajes, documentales, reels y entrevistas.">
+<title>Producción audiovisual y drone en Guayaquil · RNNLD — Ronald Guzmán Dávila</title>
+<meta name="description" content="Realizador audiovisual en Guayaquil, Ecuador: grabación, tomas con drone, edición, colorización y mezcla de audio. Reportajes, documentales, reels y entrevistas.">
+<link rel="canonical" href="https://guzmandavila.github.io/rnnld/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Ronald Guzmán Dávila">
+<meta name="geo.region" content="EC-G"><meta name="geo.placename" content="Guayaquil">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://guzmandavila.github.io/rnnld/#negocio",
+      "name": "RNNLD · Producción audiovisual",
+      "alternateName": "RNNLD",
+      "description": "Producción audiovisual en Guayaquil: grabación, tomas con drone, edición, colorización, musicalización y mezcla de audio para reportajes, documentales, reels y entrevistas.",
+      "url": "https://guzmandavila.github.io/rnnld/",
+      "image": "https://guzmandavila.github.io/rnnld/assets/og.jpg",
+      "telephone": "+593979864314",
+      "address": {"@type": "PostalAddress", "addressLocality": "Guayaquil", "addressRegion": "Guayas", "addressCountry": "EC"},
+      "areaServed": [{"@type": "City", "name": "Guayaquil"}, {"@type": "Country", "name": "Ecuador"}],
+      "founder": {"@id": "https://guzmandavila.github.io/rnnld/#ronald"},
+      "sameAs": ["https://instagram.com/guzzmandro"],
+      "knowsLanguage": "es",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios audiovisuales",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Grabación de video y entrevistas"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tomas aéreas con drone"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Edición de video"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Colorización y etalonaje"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Musicalización y mezcla de audio"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reels para redes sociales"}}
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://guzmandavila.github.io/rnnld/#ronald",
+      "name": "Ronald Guzmán Dávila",
+      "jobTitle": "Realizador audiovisual",
+      "image": "https://guzmandavila.github.io/rnnld/assets/fotos/retrato.jpg",
+      "url": "https://guzmandavila.github.io/rnnld/",
+      "sameAs": ["https://instagram.com/guzzmandro"],
+      "worksFor": {"@id": "https://guzmandavila.github.io/rnnld/#negocio"}
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://guzmandavila.github.io/rnnld/",
+      "name": "RNNLD · Ronald Guzmán Dávila",
+      "inLanguage": "es-EC"
+    }
+  ]
+}
+</script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://guzmandavila.github.io/rnnld/">
 <meta property="og:title" content="RNNLD · Ronald Guzmán Dávila — Producción audiovisual">
@@ -933,7 +987,7 @@ const FLOW=[
  {k:"color",n:"Color",s:"Etalonaje",c:"#4c7a76",d:"Paso el material plano a su look final, igualo cámaras y drone y cuido que las pieles se vean naturales.",r:["Color igualado en todo el video","Look a medida de la marca o la historia"]},
  {k:"audio",n:"Audio",s:"Música y mezcla",c:"#4c7a76",d:"Limpio voces, elijo y edito la música al corte y mezclo con el volumen correcto para cada plataforma.",r:["Voces limpias","Música editada al corte","Mezcla a −14 LUFS para redes"]},
  {k:"entrega",n:"Entrega",s:"Exportación",c:"#6d7a45",d:"Exporto los masters en los formatos que necesites, listos para subir a redes, web o televisión.",r:["Masters 16:9, 9:16 y 1:1","Subtítulos si los necesitas"]}];
-$('#nodes').innerHTML=FLOW.map((f,i)=>`<button class="node" style="--c:${f.c}" data-i="${i}" aria-label="${f.n}: ${f.s}"><div class="nh"><b>${f.n.toUpperCase()}</b><i>${String(i+1).padStart(2,'0')}</i></div><img src="assets/proceso/${f.k}.jpg" alt="" loading="lazy"><div class="ns">${f.s}</div>${i<FLOW.length-1?'<span class="wire"></span>':''}<span class="out"></span></button>`).join('');
+$('#nodes').innerHTML=FLOW.map((f,i)=>`<button class="node" style="--c:${f.c}" data-i="${i}" aria-label="${f.n}: ${f.s}"><div class="nh"><b>${f.n.toUpperCase()}</b><i>${String(i+1).padStart(2,'0')}</i></div><img src="assets/proceso/${f.k}.jpg" alt="${f.n}: ${f.s}" loading="lazy"><div class="ns">${f.s}</div>${i<FLOW.length-1?'<span class="wire"></span>':''}<span class="out"></span></button>`).join('');
 let fi=0,fAuto=true,fT;
 function flowCenter(i){if(innerWidth>640)return;const w=$('.nodes-wrap'),n=$$('.node')[i];if(!w||!n)return;const wr=w.getBoundingClientRect(),nr=n.getBoundingClientRect();
   w.scrollTo({left:w.scrollLeft+(nr.left-wr.left)-(w.clientWidth-nr.width)/2,behavior:'smooth'})}

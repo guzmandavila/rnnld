@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guzmandavila.github.io/rnnld/sitemap.xml
