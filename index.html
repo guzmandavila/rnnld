@@ -101,7 +101,12 @@
   .filters button{background:var(--p2);border:1px solid var(--line);color:var(--mut);padding:7px 14px;border-radius:2px;cursor:pointer;font-size:13px;transition:.2s}
   .filters button:hover{color:var(--tx)}
   .filters button.on{background:var(--tx);color:#111;border-color:var(--tx)}
-  .edit{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+  .edit{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px}
+  /* Trabajo vertical: el visor pasa a 9:16 con la misma altura y el inspector ocupa el resto */
+  .edit.v{grid-template-columns:auto minmax(0,1fr)}
+  .edit.v .screen{aspect-ratio:9/16;height:var(--sh,460px);width:auto}
+  .edit.v .transport>.mono{display:none}
+  .edit.v .screen .ttl{padding:30px 14px 14px}.edit.v .screen .ttl h3{font-size:20px}.edit.v .screen .ttl p{font-size:12px}
   .edit .tlp{grid-column:1/-1}
   .screen{aspect-ratio:16/9;background:#000;position:relative;display:grid;place-items:center;overflow:hidden;cursor:pointer}
   .screen .img{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(26px) brightness(.45)}
@@ -157,6 +162,36 @@
   .presets button:hover{border-color:var(--mut)}
   .presets button.on{border-color:var(--hi);color:var(--hi);background:var(--p2)}
 
+  .vw{display:grid;grid-template-columns:1fr 280px}
+  .vw .scenes{grid-template-columns:1fr 1fr;align-content:start;border-top:0;border-left:1px solid var(--line);height:0;min-height:100%;overflow-y:auto;scrollbar-width:thin}
+  .cf{display:grid;grid-template-columns:190px 1fr 1.15fr;gap:22px;padding:18px;align-items:start}
+  .cfp{position:relative;aspect-ratio:2/3;border:1px solid var(--line);background:#000 center/cover;cursor:pointer;padding:0;transition:border-color .2s}
+  .cfp:hover,.cft:hover{border-color:var(--hi)}
+  .cfp{cursor:zoom-in}
+  .cfp i{position:absolute;right:6px;bottom:6px;width:28px;height:28px;border-radius:2px;background:rgba(0,0,0,.65);display:grid;place-items:center;opacity:.85;transition:opacity .2s}
+  .cfp:hover i{opacity:1}.cfp i svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
+  .inst{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .inst b{font-size:15px;font-weight:800;letter-spacing:.04em;padding:5px 9px;background:#57068c;color:#fff;border-radius:2px}
+  .inst span{font-size:13px;color:var(--soft);line-height:1.3}
+  .cf h3{font-size:30px;margin:2px 0 4px}
+  .cf .who{color:var(--soft);font-size:14px}
+  .cf .role{display:inline-block;margin:14px 0 0;padding:4px 9px;border:1px solid var(--hi);color:var(--hi);border-radius:2px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .cf p.d{color:var(--soft);font-size:14px;margin-top:14px;max-width:52ch}
+  .fest{list-style:none;display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
+  .fest li{font-size:11px;padding:4px 8px;background:var(--p2);border:1px solid var(--line);border-radius:2px;color:var(--mut)}
+  .fest li b{color:var(--tx);font-weight:600}
+  .cft{position:relative;display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);background:#000 center/cover;cursor:pointer;padding:0;transition:border-color .2s}
+  .cft .ivplay{opacity:.95}
+  .cft i{position:absolute;left:8px;bottom:8px;font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.06em;background:rgba(0,0,0,.65);color:#fff;padding:3px 7px;border-radius:2px}
+  .cf .cta{margin-top:12px;width:100%;justify-content:center}
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;padding:14px 18px 18px;border-top:1px solid var(--line)}
+  .cgrid button{text-align:left;background:none;border:0;padding:0;cursor:pointer;color:inherit}
+  .cgrid .pp{aspect-ratio:2/3;background:#000 center/cover;border:1px solid var(--line);transition:border-color .2s}
+  .cgrid button:hover .pp,.cgrid button.on .pp{border-color:var(--hi)}
+  .cgrid b{display:block;font-size:13px;margin-top:6px}.cgrid span{font-size:11px;color:var(--mut)}
+  @media (max-width:1000px){.vw{grid-template-columns:1fr}.vw .scenes{height:auto;min-height:0;border-left:0;border-top:1px solid var(--line)}
+    .cf{grid-template-columns:150px 1fr}.cf>.cfv{grid-column:1/-1}}
+  @media (max-width:640px){.cf{grid-template-columns:104px 1fr;gap:14px;padding:14px}.cf h3{font-size:22px}.inst b{font-size:13px}.inst span{font-size:12px}.cf .cfi{display:contents}.cf .cfi>*{grid-column:2}.cf .cfi>.d,.cf .cfi>.fest{grid-column:1/-1}.cfp{grid-row:1/span 4}.cf .role{justify-self:start;margin-top:8px}.cf p.d{margin-top:4px}.cf .cta{min-height:44px}}
   .audio{display:grid;grid-template-columns:1fr 1.25fr;gap:14px;margin-top:14px}
   .svc-list{list-style:none;display:grid;gap:10px;margin-top:16px}
   .svc-list li{padding:12px 14px;border:1px solid var(--line);border-radius:2px;background:var(--p2)}
@@ -406,6 +441,8 @@
   .modal .box{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border-radius:2px;overflow:hidden;position:relative;border:1px solid var(--line)}
   .modal iframe,.modal video{width:100%;height:100%;border:0;display:block;background:#000}
   .modal .box.vert{width:auto;height:min(86vh,1100px);aspect-ratio:9/16;max-width:100%}
+  .modal .box.poster{width:auto;height:min(90vh,1536px);aspect-ratio:2/3;max-width:100%;border:0;background:transparent}
+  .modal .box.poster img{width:100%;height:100%;object-fit:contain;display:block}
   .modal .msg{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:30px}
   .modal .x{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:32px;cursor:pointer}
 
@@ -422,6 +459,7 @@
     .proc .lane{flex-direction:column}
     .fdet{grid-template-columns:1fr}
   }
+  @media (max-width:1000px){.edit.v{grid-template-columns:1fr}.edit.v .screen{height:auto;width:min(100%,calc(72vh*9/16));margin:0 auto}}
   .tap{display:none}
   @media (hover:none){.tap{display:inline}.hov{display:none}.transport .keys{display:none}}
   @media (max-width:640px){
@@ -549,27 +587,20 @@
   <div class="wrap">
     <div class="shead reveal">
       <div><span class="mono">Color · Audio</span><h2>Color y sonido</h2></div>
-      <p>Arrastra la línea para comparar el material plano con mi etalonaje final, o mueve las perillas e intenta llegar tú. Las imágenes son de mis rodajes.</p>
+      <p>Colaboraciones como colorista en cine documental y, abajo, un visor para comparar el material plano con mi etalonaje final, con imágenes de mis rodajes.</p>
     </div>
-    <div class="two reveal">
+    <!-- Colaboraciones: se generan desde COLLABS en el script. La primera sale destacada. -->
+    <div class="panel collab reveal"><div class="ph"><b>COLABORACIONES · COLOR PARA CINE</b><span class="mono" id="colN"></span></div>
+      <div id="collabs"></div></div>
+
+    <div class="panel reveal" style="margin-top:14px">
       <!-- Fotogramas reales en assets/color/: nombre.jpg (tu etalonaje) y nombre-log.jpg (antes). Para agregar una escena, súmala a SCENES en el script. -->
-      <div class="panel"><div class="ph"><b>VISOR · ANTES / DESPUÉS</b><span class="mono">arrastra la línea</span></div>
+      <div class="ph"><b>VISOR · ANTES / DESPUÉS</b><span class="mono">arrastra la línea · elige una escena</span></div>
+      <div class="vw">
         <div class="grade" id="grade"><div id="gB"></div><div class="split" id="gA"></div><div class="gbar" id="gbar"></div>
           <span class="gl" id="glA" style="left:10px">LOG ORIGINAL</span><span class="gl" style="right:10px">MI ETALONAJE</span></div>
-        <div class="scenes" id="scenes"></div></div>
-      <div class="panel"><div class="ph"><b>COLORIZACIÓN · PRUEBA TÚ</b><span class="mono">sobre el material plano</span></div>
-        <div class="pc">
-          <p style="color:var(--soft);font-size:14px;margin-bottom:18px">Mueve las perillas e intenta llegar a mi etalonaje desde el material plano. Lo que no se consigue con perillas (curvas, máscaras, pieles por separado, igualar cámaras y drone) es el trabajo de colorización.</p>
-          <div class="ctl">
-            <div><label>Contraste <span id="vC"></span></label><input type="range" id="c" min="0.6" max="1.3" step="0.01" value="1"></div>
-            <div><label>Saturación <span id="vS"></span></label><input type="range" id="s" min="0" max="1.3" step="0.01" value="1"></div>
-            <div><label>Temperatura <span id="vT"></span></label><input type="range" id="t" min="-12" max="12" step="1" value="0"></div>
-            <div><label>Exposición <span id="vE"></span></label><input type="range" id="e" min="0.6" max="1.2" step="0.01" value="1"></div>
-          </div>
-          <div class="presets" id="presets" style="margin-top:20px">
-            <button id="verMio">Ver mi etalonaje</button><button id="reset">Reiniciar</button>
-          </div>
-        </div></div>
+        <div class="scenes" id="scenes"></div>
+      </div>
     </div>
 
     <div class="audio reveal">
@@ -746,11 +777,13 @@ $$('#tabs a').forEach(a=>a.onclick=()=>$('#tabs').classList.remove('open'));
 let hf=0;setInterval(()=>{hf++;$('#heroTc').textContent=toTC(hf)},40);
 
 /* ---------- Modal de video ---------- */
-function openVideo(key,vertical){const id=VIDEOS[key];$('#mbox').classList.toggle('vert',!!vertical);
+function openVideo(key,vertical){const id=VIDEOS[key];$('#mbox').classList.toggle('vert',!!vertical);$('#mbox').classList.remove('poster');
   $('#mbox').innerHTML=!id?'':/\.(mp4|webm|mov)$/i.test(id)?`<video src="${id}" poster="${key==='reel'?'assets/fondo.jpg':`assets/trabajos/${key}.jpg`}" controls autoplay playsinline></video>`
    :`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
   if(!id)$('#mbox').innerHTML=`<div class="msg"><div><p class="mono">Reproductor</p><p style="margin-top:10px;font-size:20px">Aquí se reproduce tu video de YouTube o Vimeo.</p><p style="color:var(--mut);margin-top:6px">Agrega su ID en el objeto VIDEOS del código.</p></div></div>`;
   $('#modal').classList.add('open')}
+function openImage(src,alt){$('#mbox').classList.remove('vert');$('#mbox').classList.add('poster');
+  $('#mbox').innerHTML=`<img src="${src}" alt="${alt}">`;$('#modal').classList.add('open')}
 const closeModal=()=>{$('#modal').classList.remove('open');$('#mbox').innerHTML=''};
 $('#modal').onclick=e=>{if(e.target.id==='modal'||e.target.classList.contains('x'))closeModal()};
 $$('[data-video]').forEach(b=>b.onclick=()=>openVideo(b.dataset.video));
@@ -811,7 +844,7 @@ function setPos(p){pos=Math.max(0,Math.min(99.9,p));const lane=lv1.getBoundingCl
   $('#head').style.left=(lane.left-r.left+lane.width*pos/100)+'px';
   const i=segAt(pos);if(i>=0){const sec=secStart[i]+(pos-starts[i])/lens[i]*WORKS[i].dur;$('#tcode').textContent=toTC(Math.floor(sec*24))}
   if(i>=0&&i!==cur)show(i)}
-function show(i){cur=i;const w=WORKS[i],img=`assets/trabajos/${w.f}.jpg`;
+function show(i){cur=i;const w=WORKS[i],img=`assets/trabajos/${w.f}.jpg`;$('.edit').classList.toggle('v',!!w.vert);
   $('#vimg').style.backgroundImage=`url(${img})`;$('#vposter').src=img;$('#vposter').alt=w.t;$('#vt').textContent=w.t;$('#vs').textContent=w.s;
   $('#vname').textContent=w.f+'.mp4';
   $$('.seg[data-i]').forEach(s=>s.classList.toggle('act',+s.dataset.i===i));
@@ -819,6 +852,9 @@ function show(i){cur=i;const w=WORKS[i],img=`assets/trabajos/${w.f}.jpg`;
   $('#insp').innerHTML=`<h3>${w.t}</h3><p>${w.d}</p><div class="row"><span>Formato</span><span>${w.s}</span></div><div class="row"><span>Duración</span><span>${fmtDur(w.dur)}</span></div><div class="row"><span>Aspecto</span><span>${w.vert?'9:16 vertical':'16:9 horizontal'}</span></div>${extra}<div class="roles">${(w.roles||[]).map(r=>`<span>${r}</span>`).join('')}</div><button class="cta" id="watch"><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg> Ver video completo</button>`;
   $('#watch').onclick=()=>openVideo(w.f,w.vert)}
 const jump=i=>setPos(starts[i]+.3);
+// Altura del visor = la que tendría en 16:9, así no salta la página al pasar de un trabajo horizontal a uno vertical
+const fitScreen=()=>{const e=$('.edit');e.style.setProperty('--sh',((e.clientWidth-14)*2/3*9/16)+'px')};
+fitScreen();addEventListener('resize',fitScreen);
 $('#screen').onclick=()=>openVideo(WORKS[cur].f,WORKS[cur].vert);
 $$('.seg[data-i]').forEach(s=>s.onclick=()=>jump(+s.dataset.i));
 $('#ruler').onclick=e=>{const r=lv1.getBoundingClientRect();const p=(e.clientX-r.left)/r.width*100;const i=segAt(p);if(i<0||ok(i))setPos(p)};
@@ -840,6 +876,36 @@ addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)
   const r=$('#trabajos').getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
   const k=e.key.toLowerCase();if(k==='j')step(-1);if(k==='l')step(1);if(k==='k')togglePlay()});
 
+/* ---------- Colaboraciones ---------- */
+// Una entrada por colaboración. La primera sale destacada; las demás quedan como afiches debajo y al tocarlas pasan arriba.
+// img = afiche vertical (imgL = versión grande al ampliar), still = fotograma 16:9 del tráiler, yt = ID de YouTube.
+const COLLABS=[
+ {t:"Nieta 139",tipo:"Documental",year:2025,inst:"NYU",instL:"New York University",dir:"Gabriela Pinasco Nájera",dirRol:"Dirección y edición",rol:"Colorización",
+  img:"assets/creditos/nieta-139.jpg",imgL:"assets/creditos/nieta-139-grande.jpg",still:"assets/creditos/nieta-139-trailer.jpg",yt:"f8cfha0sqRM",
+  d:"Etalonaje del documental, del material de cámara al color final que se ve en pantalla y en festivales.",
+  fest:[["Ganador","Oklahoma Latin American Film Festival 2025"],"IFFBoston 2026","Guayaquil International Film Festival","PampaDocFest","FESAALP 21°","Astoria Film Festival 2026"]}];
+COLLABS.forEach((c,i)=>VIDEOS['collab'+i]=c.yt);
+function collab(k){const c=COLLABS[k];
+  $('#collabs').innerHTML=`<div class="cf">
+    <button class="cfp" style="background-image:url(${c.img})" aria-label="Ampliar afiche de ${c.t}" data-zoom="${k}"><i><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></svg></i></button>
+    <div class="cfi">
+      <div class="inst"><b>${c.inst}</b><span>Colaboración con ${c.dir}<br>${c.instL}</span></div>
+      <span class="mono">${c.tipo} · ${c.year}</span>
+      <h3>${c.t}</h3>
+      <div class="who">${c.dirRol}: ${c.dir}</div>
+      <span class="role">Mi rol · ${c.rol}</span>
+      <p class="d">${c.d}</p>
+      <ul class="fest">${(c.fest||[]).map(f=>Array.isArray(f)?`<li><b>${f[0]}</b> · ${f[1]}</li>`:`<li>${f}</li>`).join('')}</ul>
+    </div>
+    <div class="cfv"><button class="cft" style="background-image:url(${c.still})" data-c="${k}" aria-label="Ver tráiler"><span class="ivplay"></span><i>TRÁILER</i></button>
+      <button class="cta ghost" data-c="${k}">Ver tráiler</button></div>
+  </div>${COLLABS.length>1?`<div class="cgrid">${COLLABS.map((o,j)=>`<button class="${j===k?'on':''}" data-pick="${j}"><div class="pp" style="background-image:url(${o.img})"></div><b>${o.t}</b><span>${o.inst} · ${o.rol}</span></button>`).join('')}</div>`:''}`;
+  $$('#collabs [data-c]').forEach(b=>b.onclick=()=>openVideo('collab'+b.dataset.c));
+  $$('#collabs [data-zoom]').forEach(b=>b.onclick=()=>openImage(COLLABS[+b.dataset.zoom].imgL||COLLABS[+b.dataset.zoom].img,'Afiche de '+COLLABS[+b.dataset.zoom].t));
+  $$('#collabs [data-pick]').forEach(b=>b.onclick=()=>collab(+b.dataset.pick))}
+$('#colN').textContent=`${COLLABS.length} proyecto${COLLABS.length>1?'s':''}`;
+collab(0);
+
 /* ---------- Color ---------- */
 // Escenas reales: assets/color/<f>-log.jpg (antes) y <f>.jpg (tu etalonaje final)
 const SCENES=[{f:"piel",n:"Piel"},{f:"retrato",n:"Retrato"},{f:"entrevista",n:"Entrevista"},{f:"nocturno",n:"Nocturno"},{f:"contraluz",n:"Contraluz"},{f:"costa-nublada",n:"Costa nublada"},{f:"drone-costa",n:"Drone · costa"},{f:"sendero",n:"Sendero"},{f:"cascada",n:"Cascada"},{f:"drone-canoa",n:"Drone · canoa"},{f:"detalle",n:"Detalle"},{f:"gastronomia",n:"Gastronomía"},{f:"laguna",n:"Laguna"},{f:"exterior",n:"Exterior"},{f:"playa",n:"Playa"},{f:"rio",n:"Drone · río"},{f:"valle",n:"Drone · valle"},{f:"campo",n:"Drone · campo"},{f:"mar",n:"Drone · mar"},{f:"atardecer",n:"Atardecer"}];
@@ -850,19 +916,11 @@ function scene(i){const f=SCENES[i].f;
 $('#scenes').innerHTML=SCENES.map((sc,i)=>`<button style="background-image:url(assets/color/mini/${sc.f}.jpg)" title="${sc.n}"><span>${sc.n}</span></button>`).join('');
 $$('#scenes button').forEach((b,i)=>b.onclick=()=>scene(i));
 scene(0);
-function grade(){const c=+$('#c').value,s=+$('#s').value,t=+$('#t').value,e=+$('#e').value;
-  $('#vC').textContent=c.toFixed(2);$('#vS').textContent=s.toFixed(2);$('#vT').textContent=(t>0?'+':'')+t;$('#vE').textContent=e.toFixed(2);
-  const neutro=c===1&&s===1&&t===0&&e===1;
-  $('#gA').style.filter=neutro?'':`contrast(${c}) saturate(${s}) brightness(${e}) sepia(${Math.max(0,-t)/100}) hue-rotate(${t}deg)`;
-  $('#glA').textContent=neutro?'LOG ORIGINAL':'TU INTENTO'}
-['c','s','t','e'].forEach(id=>$('#'+id).oninput=()=>{grade();if(gp<20)slideTo(50)});
-grade();
+// Perillas de "prueba tú" retiradas por ahora (están en el commit 03d3134 si se quieren volver a poner)
 const gr=$('#grade');let dg=false;
 let gp=50;const setp=p=>{gp=p;$('#gA').style.clipPath=`inset(0 ${100-p}% 0 0)`;$('#gbar').style.left=p+'%'};
 const sp=x=>{const r=gr.getBoundingClientRect();setp(Math.max(0,Math.min(100,(x-r.left)/r.width*100)))};
 function slideTo(to){const from=gp,t0=performance.now();const st=now=>{const k=Math.min(1,(now-t0)/600),q=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;setp(from+(to-from)*q);if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
-$('#verMio').onclick=()=>slideTo(0);
-$('#reset').onclick=()=>{['c','s','t','e'].forEach(id=>$('#'+id).value=id==='t'?0:1);grade();slideTo(50)};
 gr.onpointerdown=e=>{dg=true;gr.setPointerCapture(e.pointerId);sp(e.clientX)};gr.onpointermove=e=>dg&&sp(e.clientX);gr.onpointerup=()=>dg=false;
 
 
