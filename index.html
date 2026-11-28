@@ -606,7 +606,7 @@
       <div><span class="mono">Línea de tiempo · trabajos</span><h2>Trabajos</h2></div>
       <div class="filters" id="filters">
         <button class="on" data-f="all">Todo</button><button data-f="reel">Reels</button><button data-f="entrevista">Entrevistas</button>
-        <button data-f="bts">Detrás de cámara</button><button data-f="corporativo">Corporativo</button><button data-f="documental">Documentales y reportajes</button>
+        <button data-f="bts">Detrás de cámara</button><button data-f="corporativo">Corporativo</button><button data-f="documental">Documentales y reportajes</button><button data-f="musica">Música en vivo</button>
       </div>
     </div>
     <div class="edit reveal">
@@ -621,7 +621,7 @@
       </div>
       <div class="panel insp"><div class="ph"><b>INSPECTOR · PROYECTO</b></div><div class="pc" id="insp"></div></div>
       <div class="panel tlp">
-        <div class="ph"><b>SECUENCIA · PORTAFOLIO</b><span class="mono" id="count">11 proyectos · 23.976 fps</span></div>
+        <div class="ph"><b>SECUENCIA · PORTAFOLIO</b><span class="mono" id="count">12 proyectos · 23.976 fps</span></div>
         <div class="tl" id="tl">
           <div class="ruler" id="ruler"></div>
           <div class="track"><div class="lab">V2</div><div class="lane" id="lv2"></div></div>
@@ -865,10 +865,12 @@ $('#bin').innerHTML=SVC.map((s,i)=>`<div class="clip"><div class="th" style="bac
 /* ---------- Trabajos en la línea de tiempo ---------- */
 // Un objeto por trabajo. f = nombre de archivo en assets/trabajos/ (sin extensión).
 // dur = duración real en segundos; vert = true si es vertical 9:16. Edita t (título), s (formato), d (descripción) y cat (filtros).
+// yt = ID de YouTube si el video está solo allí (no hace falta el .mp4; la onda puede ser referencial).
 // Puedes añadir: client:"Nombre del cliente", year:2026, roles:["Cámara","Edición","Color"]
 const WORKS=[
  {f:"aun-hay-hielo",t:"Aún Hay Hielo",s:"Reel · Reportaje ambiental",dur:127.9,vert:true,cat:["reel","documental"],d:"Reportaje sobre el derretimiento de los glaciares del Chimborazo, contado en formato vertical para redes."},
  {f:"monte-sinai",t:"Monte Sinaí",s:"Reportaje · Vistazo",dur:299.6,vert:false,cat:["documental","entrevista"],d:"Reportaje para Vistazo en Monte Sinaí, al noroeste de Guayaquil, donde el deporte se ha convertido en mucho más que una actividad para ocupar el tiempo libre de niños y niñas."},
+ {f:"cometa-sucre-lejos",yt:"CfwpyJeH-tM",t:"Cometa Sucre · Lejos",s:"Sesión en vivo · Música",dur:204,vert:false,cat:["musica"],year:2024,client:"Cometa Sucre",d:"Sesión en vivo de la banda Cometa Sucre desde el estudio de Uve Sounds, para el Showcase de Estudio B de Radio City. Grabada en Guayaquil en junio de 2024."},
  {f:"omar-rincon",t:"Omar Rincón",s:"Reel · Entrevista",dur:142.0,vert:true,cat:["reel","entrevista"],d:"Entrevista editada en formato reel, con subtítulos dinámicos."},
  {f:"polly-gaby-bts",t:"Polly & Gaby · Portada",s:"Detrás de cámara · Entrevista",dur:193.2,vert:true,cat:["bts","entrevista"],d:"Detrás de cámaras de una sesión de portada para revista, con entrevista a las protagonistas."},
  {f:"mirella-cesa-bts",t:"Mirella Cesa · BTS",s:"Detrás de cámara · Reel",dur:133.6,vert:true,cat:["bts","reel"],d:"Detrás de cámaras de una sesión de fotos, editado para redes."},
@@ -878,7 +880,7 @@ const WORKS=[
  {f:"hogar-noe",t:"Hogar · Noe",s:"Reel · Promo gastronómica",dur:17.0,vert:true,cat:["reel"],d:"Promo corta de gastronomía para redes."},
  {f:"panteon-metropolitano",t:"Panteón Metropolitano",s:"Corporativo · Servicios",dur:94.8,vert:false,cat:["corporativo"],d:"Video institucional de servicios y productos, con tomas aéreas de las instalaciones."},
  {f:"agripac",t:"Agripac · Tráiler",s:"Corporativo · Tráiler",dur:30.2,vert:true,cat:["corporativo","reel"],d:"Tráiler corporativo para la industria agrícola."}];
-WORKS.forEach(w=>VIDEOS[w.f]=`assets/trabajos/${w.f}.mp4`);
+WORKS.forEach(w=>VIDEOS[w.f]=w.yt||`assets/trabajos/${w.f}.mp4`);
 // Ancho de cada clip proporcional a su duración (mínimo para que se lea el nombre, máximo para que uno largo no tape a los demás)
 const wts=WORKS.map(w=>Math.min(Math.max(w.dur,55),150)),tw=wts.reduce((a,b)=>a+b,0);
 const lens=wts.map(x=>x/tw*100);const starts=[];lens.reduce((a,l)=>(starts.push(a),a+l),0);
@@ -887,7 +889,7 @@ const lv1=$('#lv1');
 WORKS.forEach((w,i)=>{const st=`left:${starts[i]}%;width:calc(${lens[i]}% - 3px)`;
   lv1.insertAdjacentHTML('beforeend',`<div class="seg v1" data-i="${i}" style="${st}" title="${w.t}">${w.t}</div>`);
   $('#lv2').insertAdjacentHTML('beforeend',`<div class="seg v2" data-i="${i}" style="left:${starts[i]+.6}%;width:${lens[i]*.5}%">Título · ${w.s.split(' · ')[0]}</div>`);
-  $('#la1').insertAdjacentHTML('beforeend',`<div class="seg a" data-i="${i}" style="${st};background-image:url(assets/trabajos/${w.f}-onda.png);background-size:100% 100%"></div>`)});
+  $('#la1').insertAdjacentHTML('beforeend',`<div class="seg a" data-i="${i}" style="${st};background-image:url(assets/trabajos/${w.f}-onda.png);background-size:100% 100%"${w.yt?' title="Onda referencial"':''}></div>`)});
 $('#la2').innerHTML=`<div class="seg m" style="left:0;width:44%"><canvas></canvas></div><div class="seg m" style="left:45%;width:55%"><canvas></canvas></div>`;
 function drawWaves(){$$('.seg canvas').forEach((c,k)=>{const w=c.clientWidth,h=c.clientHeight;if(!w)return;c.width=w;c.height=h;const x=c.getContext('2d');
   x.fillStyle='#e6a23c';for(let i=0;i<w;i+=2){const a=.35+.3*Math.abs(Math.sin(i/14+k))+.15*Math.random();const hh=a*h*.85;x.fillRect(i,(h-hh)/2,1.2,hh)}})}
@@ -903,7 +905,7 @@ function setPos(p){pos=Math.max(0,Math.min(99.9,p));const lane=lv1.getBoundingCl
   if(i>=0&&i!==cur)show(i)}
 function show(i){cur=i;const w=WORKS[i],img=`assets/trabajos/${w.f}.jpg`;$('.edit').classList.toggle('v',!!w.vert);
   $('#vimg').style.backgroundImage=`url(${img})`;$('#vposter').src=img;$('#vposter').alt=w.t;$('#vt').textContent=w.t;$('#vs').textContent=w.s;
-  $('#vname').textContent=w.f+'.mp4';
+  $('#vname').textContent=w.yt?'youtube · '+w.f:w.f+'.mp4';
   $$('.seg[data-i]').forEach(s=>s.classList.toggle('act',+s.dataset.i===i));
   const extra=(w.client?`<div class="row"><span>Cliente</span><span>${w.client}</span></div>`:'')+(w.year?`<div class="row"><span>Año</span><span>${w.year}</span></div>`:'');
   $('#insp').innerHTML=`<h3>${w.t}</h3><p>${w.d}</p><div class="row"><span>Formato</span><span>${w.s}</span></div><div class="row"><span>Duración</span><span>${fmtDur(w.dur)}</span></div><div class="row"><span>Aspecto</span><span>${w.vert?'9:16 vertical':'16:9 horizontal'}</span></div>${extra}<div class="roles">${(w.roles||[]).map(r=>`<span>${r}</span>`).join('')}</div><button class="cta" id="watch"><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg> Ver video completo</button>`;
